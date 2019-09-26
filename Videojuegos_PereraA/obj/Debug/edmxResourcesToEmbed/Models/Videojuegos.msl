@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="VideoJuegosModelStoreContainer" CdmEntityContainer="VideoJuegosEntities">
+    <EntitySetMapping Name="Cliente">
+      <EntityTypeMapping TypeName="VideoJuegosModel.Cliente">
+        <MappingFragment StoreEntitySet="Cliente">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+          <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Desarrollador">
+      <EntityTypeMapping TypeName="VideoJuegosModel.Desarrollador">
+        <MappingFragment StoreEntitySet="Desarrollador">
+          <ScalarProperty Name="IdDesarrollador" ColumnName="IdDesarrollador" />
+          <ScalarProperty Name="Desarrollador1" ColumnName="Desarrollador" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Distribuidor">
+      <EntityTypeMapping TypeName="VideoJuegosModel.Distribuidor">
+        <MappingFragment StoreEntitySet="Distribuidor">
+          <ScalarProperty Name="IdDistribuidor" ColumnName="IdDistribuidor" />
+          <ScalarProperty Name="Distribuidor1" ColumnName="Distribuidor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Juego">
+      <EntityTypeMapping TypeName="VideoJuegosModel.Juego">
+        <MappingFragment StoreEntitySet="Juego">
+          <ScalarProperty Name="IdJuego" ColumnName="IdJuego" />
+          <ScalarProperty Name="Juego1" ColumnName="Juego" />
+          <ScalarProperty Name="IdTipo" ColumnName="IdTipo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="JuegoPlataforma">
+      <EntityTypeMapping TypeName="VideoJuegosModel.JuegoPlataforma">
+        <MappingFragment StoreEntitySet="JuegoPlataforma">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdJuego" ColumnName="IdJuego" />
+          <ScalarProperty Name="IdPlataforma" ColumnName="IdPlataforma" />
+          <ScalarProperty Name="IdDistribuidor" ColumnName="IdDistribuidor" />
+          <ScalarProperty Name="IdDesarrollador" ColumnName="IdDesarrollador" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Plataforma">
+      <EntityTypeMapping TypeName="VideoJuegosModel.Plataforma">
+        <MappingFragment StoreEntitySet="Plataforma">
+          <ScalarProperty Name="IdPlataforma" ColumnName="IdPlataforma" />
+          <ScalarProperty Name="Plataforma1" ColumnName="Plataforma" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Puntuacion">
+      <EntityTypeMapping TypeName="VideoJuegosModel.Puntuacion">
+        <MappingFragment StoreEntitySet="Puntuacion">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Idcliente" ColumnName="Idcliente" />
+          <ScalarProperty Name="idjuegoplataforma" ColumnName="idjuegoplataforma" />
+          <ScalarProperty Name="Puntuacion1" ColumnName="Puntuacion" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tipo">
+      <EntityTypeMapping TypeName="VideoJuegosModel.Tipo">
+        <MappingFragment StoreEntitySet="Tipo">
+          <ScalarProperty Name="IdTipo" ColumnName="IdTipo" />
+          <ScalarProperty Name="Tipo1" ColumnName="Tipo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

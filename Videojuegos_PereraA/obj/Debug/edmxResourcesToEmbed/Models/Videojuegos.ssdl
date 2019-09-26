@@ -1,0 +1,191 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="VideoJuegosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Cliente">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="255" />
+    <Property Name="Email" Type="varchar" MaxLength="255" />
+    <Property Name="FechaNacimiento" Type="datetime" />
+    <Property Name="FechaRegistro" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Desarrollador">
+    <Key>
+      <PropertyRef Name="IdDesarrollador" />
+    </Key>
+    <Property Name="IdDesarrollador" Type="int" Nullable="false" />
+    <Property Name="Desarrollador" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Distribuidor">
+    <Key>
+      <PropertyRef Name="IdDistribuidor" />
+    </Key>
+    <Property Name="IdDistribuidor" Type="int" Nullable="false" />
+    <Property Name="Distribuidor" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Juego">
+    <Key>
+      <PropertyRef Name="IdJuego" />
+    </Key>
+    <Property Name="IdJuego" Type="int" Nullable="false" />
+    <Property Name="Juego" Type="varchar" MaxLength="255" />
+    <Property Name="IdTipo" Type="int" />
+  </EntityType>
+  <EntityType Name="JuegoPlataforma">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="IdJuego" Type="int" />
+    <Property Name="IdPlataforma" Type="int" />
+    <Property Name="IdDistribuidor" Type="int" />
+    <Property Name="IdDesarrollador" Type="int" />
+  </EntityType>
+  <EntityType Name="Plataforma">
+    <Key>
+      <PropertyRef Name="IdPlataforma" />
+    </Key>
+    <Property Name="IdPlataforma" Type="int" Nullable="false" />
+    <Property Name="Plataforma" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Puntuacion">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Idcliente" Type="int" />
+    <Property Name="idjuegoplataforma" Type="int" />
+    <Property Name="Puntuacion" Type="int" />
+    <Property Name="Fecha" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Tipo">
+    <Key>
+      <PropertyRef Name="IdTipo" />
+    </Key>
+    <Property Name="IdTipo" Type="int" Nullable="false" />
+    <Property Name="Tipo" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <Association Name="FK_juegoplataformadesarrollador">
+    <End Role="Desarrollador" Type="Self.Desarrollador" Multiplicity="0..1" />
+    <End Role="JuegoPlataforma" Type="Self.JuegoPlataforma" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Desarrollador">
+        <PropertyRef Name="IdDesarrollador" />
+      </Principal>
+      <Dependent Role="JuegoPlataforma">
+        <PropertyRef Name="IdDesarrollador" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_juegoplataformadistribuidor">
+    <End Role="Distribuidor" Type="Self.Distribuidor" Multiplicity="0..1" />
+    <End Role="JuegoPlataforma" Type="Self.JuegoPlataforma" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Distribuidor">
+        <PropertyRef Name="IdDistribuidor" />
+      </Principal>
+      <Dependent Role="JuegoPlataforma">
+        <PropertyRef Name="IdDistribuidor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_juegoplataformajuego">
+    <End Role="Juego" Type="Self.Juego" Multiplicity="0..1" />
+    <End Role="JuegoPlataforma" Type="Self.JuegoPlataforma" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Juego">
+        <PropertyRef Name="IdJuego" />
+      </Principal>
+      <Dependent Role="JuegoPlataforma">
+        <PropertyRef Name="IdJuego" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_juegoplataformaplataforma">
+    <End Role="Plataforma" Type="Self.Plataforma" Multiplicity="0..1" />
+    <End Role="JuegoPlataforma" Type="Self.JuegoPlataforma" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Plataforma">
+        <PropertyRef Name="IdPlataforma" />
+      </Principal>
+      <Dependent Role="JuegoPlataforma">
+        <PropertyRef Name="IdPlataforma" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_juegotipo">
+    <End Role="Tipo" Type="Self.Tipo" Multiplicity="0..1" />
+    <End Role="Juego" Type="Self.Juego" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tipo">
+        <PropertyRef Name="IdTipo" />
+      </Principal>
+      <Dependent Role="Juego">
+        <PropertyRef Name="IdTipo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_puntuacioncliente">
+    <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
+    <End Role="Puntuacion" Type="Self.Puntuacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Puntuacion">
+        <PropertyRef Name="Idcliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_puntuacionjuegoplataforma">
+    <End Role="JuegoPlataforma" Type="Self.JuegoPlataforma" Multiplicity="0..1" />
+    <End Role="Puntuacion" Type="Self.Puntuacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="JuegoPlataforma">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Puntuacion">
+        <PropertyRef Name="idjuegoplataforma" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="VideoJuegosModelStoreContainer">
+    <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Desarrollador" EntityType="Self.Desarrollador" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Distribuidor" EntityType="Self.Distribuidor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Juego" EntityType="Self.Juego" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="JuegoPlataforma" EntityType="Self.JuegoPlataforma" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Plataforma" EntityType="Self.Plataforma" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Puntuacion" EntityType="Self.Puntuacion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tipo" EntityType="Self.Tipo" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_juegoplataformadesarrollador" Association="Self.FK_juegoplataformadesarrollador">
+      <End Role="Desarrollador" EntitySet="Desarrollador" />
+      <End Role="JuegoPlataforma" EntitySet="JuegoPlataforma" />
+    </AssociationSet>
+    <AssociationSet Name="FK_juegoplataformadistribuidor" Association="Self.FK_juegoplataformadistribuidor">
+      <End Role="Distribuidor" EntitySet="Distribuidor" />
+      <End Role="JuegoPlataforma" EntitySet="JuegoPlataforma" />
+    </AssociationSet>
+    <AssociationSet Name="FK_juegoplataformajuego" Association="Self.FK_juegoplataformajuego">
+      <End Role="Juego" EntitySet="Juego" />
+      <End Role="JuegoPlataforma" EntitySet="JuegoPlataforma" />
+    </AssociationSet>
+    <AssociationSet Name="FK_juegoplataformaplataforma" Association="Self.FK_juegoplataformaplataforma">
+      <End Role="Plataforma" EntitySet="Plataforma" />
+      <End Role="JuegoPlataforma" EntitySet="JuegoPlataforma" />
+    </AssociationSet>
+    <AssociationSet Name="FK_juegotipo" Association="Self.FK_juegotipo">
+      <End Role="Tipo" EntitySet="Tipo" />
+      <End Role="Juego" EntitySet="Juego" />
+    </AssociationSet>
+    <AssociationSet Name="FK_puntuacioncliente" Association="Self.FK_puntuacioncliente">
+      <End Role="Cliente" EntitySet="Cliente" />
+      <End Role="Puntuacion" EntitySet="Puntuacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_puntuacionjuegoplataforma" Association="Self.FK_puntuacionjuegoplataforma">
+      <End Role="JuegoPlataforma" EntitySet="JuegoPlataforma" />
+      <End Role="Puntuacion" EntitySet="Puntuacion" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Bienvenido</h2>
+
+<div width="1280" | style="background-image: url('@Url.Content("~/Content/Images/borderlands2-background.jpg")');
+     background-repeat: no-repeat; background-size: cover;">
+    <h1 style="color:white" ;>Videojuegos de Adriánn en ASP.NET</h1>
+    <p class="lead" style="color:white" ;>Catálogos de juegos OP</p>
+    <p>
+        <a href="@Url.Action("Index", "Admin")" class="btn btn-primary btn-lg">Admin</a>
+    </p>
+
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <h2>Juegos</h2>
+        <p>
+            <a class="btn btn-default" href="@Url.Action("Index", "Product")">
+                <img src="~/Content/Images/Games-icon.png" alt="Catálogo" width="128" height="128" />
+                Ir a juegos&raquo;
+            </a>
+        </p>
+    </div>
+
+    <div class="col-md-4">
+        <h2>Plataformas</h2>
+        <p>
+            <a class="btn btn-default" href="@Url.Action("Index", "Plataformas")">
+                <img src="~/Content/Images/Xbox-icon.png" alt="Plataformas" width="128" height="128" />
+                Ir a plataformas&raquo;
+            </a>
+        </p>
+    </div>
+
+    <div class="col-md-4">
+        <h2>Login</h2>
+        <p>
+            <a class="btn btn-default" href="@Url.Action("Index", "Login")">
+                <img src="~/Content/Images/PC-icon.png" alt="Login" width="128" height="128" />
+                Identificarse&raquo;
+            </a>
+        </p>
+        <p>
+            @Html.ActionLink("Acerca de...", "About", null, new { @class = "btn btn-primary" })
+        </p>
+    </div>
+</div>

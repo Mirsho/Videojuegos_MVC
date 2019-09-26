@@ -38,7 +38,7 @@ namespace Videojuegos_PereraA.Models
         [ForeignKey("IdPlataforma")]
         public virtual Plataforma Plataforma { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        [ForeignKey("Id")]
+        //[ForeignKey("Id")]
         public virtual ICollection<Puntuacion> Puntuacion { get; set; }
     }
 }

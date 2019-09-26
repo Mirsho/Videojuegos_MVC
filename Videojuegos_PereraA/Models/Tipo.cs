@@ -28,7 +28,6 @@ namespace Videojuegos_PereraA.Models
         public string Tipo1 { get; set; }   //Le chirría que haya un atributo con el mismo nombre de la clase, por lo que le asigna un 1.
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        [ForeignKey("IdTipo")]
         public virtual ICollection<Juego> Juego { get; set; }
     }
 }

@@ -23,7 +23,7 @@ namespace Videojuegos_PereraA.Models
         public Nullable<int> Puntuacion1 { get; set; }
         public Nullable<System.DateTime> Fecha { get; set; }
     
-        [ForeignKey("Idcliente")]    //REVISAR
+        [ForeignKey("Idcliente")]
         public virtual Cliente Cliente { get; set; }
         [ForeignKey("Idjuegoplataforma")]
         public virtual JuegoPlataforma JuegoPlataforma { get; set; }

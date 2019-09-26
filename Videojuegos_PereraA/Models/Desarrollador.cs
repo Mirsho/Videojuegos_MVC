@@ -28,7 +28,7 @@ namespace Videojuegos_PereraA.Models
         public string Desarrollador1 { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        [ForeignKey("IdDesarrollador")]
+        //[ForeignKey("IdDesarrollador")]
         public virtual ICollection<JuegoPlataforma> JuegoPlataforma { get; set; }
     }
 }

@@ -29,7 +29,6 @@ namespace Videojuegos_PereraA.Models
         public Nullable<int> IdTipo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        [ForeignKey("IdJuego")]
         public virtual ICollection<JuegoPlataforma> JuegoPlataforma { get; set; }
         [ForeignKey("IdTipo")]
         public virtual Tipo Tipo { get; set; }

@@ -30,7 +30,7 @@ namespace Videojuegos_PereraA.Models
         public Nullable<System.DateTime> FechaRegistro { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        [ForeignKey("Id")]
+        //[ForeignKey("Id")]
         public virtual ICollection<Puntuacion> Puntuacion { get; set; }
     }
 }

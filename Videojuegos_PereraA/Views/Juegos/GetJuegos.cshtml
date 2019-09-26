@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Videojuegos_PereraA.Models.Juego>
+
+@{
+    ViewBag.Title = "GetJuegos";
+}
+
+<h2>GetJuegos</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Juego1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tipo.Tipo1)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Juego1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tipo.Tipo1)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IdJuego }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IdJuego }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IdJuego })
+        </td>
+    </tr>
+}
+
+</table>

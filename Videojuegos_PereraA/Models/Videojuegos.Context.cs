@@ -19,13 +19,27 @@ namespace Videojuegos_PereraA.Models
             : base("name=VideoJuegosEntities")
         {
         }
-    
+
+        /*
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
         }
-    
-        public virtual DbSet<Cliente> Cliente { get; set; }
+        */
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Cliente>().ToTable("Cliente");  //Al llamar a la clase, se conecta con la tabla "Cliente"
+            modelBuilder.Entity<Desarrollador>().ToTable("Desarrollador");
+            modelBuilder.Entity<Distribuidor>().ToTable("Distribuidor");
+            modelBuilder.Entity<Juego>().ToTable("Juego");
+            modelBuilder.Entity<JuegoPlataforma>().ToTable("JuegoPlataforma");
+            modelBuilder.Entity<Plataforma>().ToTable("Plataforma");
+            modelBuilder.Entity<Puntuacion>().ToTable("Puntuacion");
+            modelBuilder.Entity<Tipo>().ToTable("Tipo");
+        }
+
+        public virtual DbSet<Cliente> Cliente { get; set; }     //Metodo getter y setter de la clase Cliente
         public virtual DbSet<Desarrollador> Desarrollador { get; set; }
         public virtual DbSet<Distribuidor> Distribuidor { get; set; }
         public virtual DbSet<Juego> Juego { get; set; }

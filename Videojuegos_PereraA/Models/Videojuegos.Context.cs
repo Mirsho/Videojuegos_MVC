@@ -13,7 +13,7 @@ namespace Videojuegos_PereraA.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class VideoJuegosEntities : DbContext
+    public partial class VideoJuegosEntitiesOLD : DbContext
     {
         public VideoJuegosEntities()
             : base("name=VideoJuegosEntities")
@@ -37,6 +37,9 @@ namespace Videojuegos_PereraA.Models
             modelBuilder.Entity<Plataforma>().ToTable("Plataforma");
             modelBuilder.Entity<Puntuacion>().ToTable("Puntuacion");
             modelBuilder.Entity<Tipo>().ToTable("Tipo");
+            modelBuilder.Entity<Usuario>().ToTable("Usuarios");
+            modelBuilder.Entity<Grupo>().ToTable("Grupos");
+            modelBuilder.Entity<UsuarioGrupo>().ToTable("UsuariosGrupos");
         }
 
         public virtual DbSet<Cliente> Cliente { get; set; }     //Metodo getter y setter de la clase Cliente
@@ -47,5 +50,8 @@ namespace Videojuegos_PereraA.Models
         public virtual DbSet<Plataforma> Plataforma { get; set; }
         public virtual DbSet<Puntuacion> Puntuacion { get; set; }
         public virtual DbSet<Tipo> Tipo { get; set; }
+        public virtual DbSet<Usuario> Usuarios { get; set; }
+        public virtual DbSet<Grupo> Grupos { get; set; }
+        public virtual DbSet<UsuarioGrupo> UsuariosGrupos { get; set; }
     }
 }

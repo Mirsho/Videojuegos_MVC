@@ -1,10 +1,12 @@
-﻿@model IEnumerable<Videojuegos_PereraA.Models.Juego>
+﻿@model PagedList.IPagedList<Videojuegos_PereraA.Models.Juego>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
 @{
-    ViewBag.Title = "GetJuegos";
+    ViewBag.Title = "Juegos";
 }
 
-<h2>GetJuegos</h2>
+<h2>Lista de Juegos</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -12,28 +14,36 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Juego1)
+            Juego
+            <!-- arrobaHtml.ActionLink("Juego", "Index", new { sortOrder = ViewBag.NameSortParm }) Descomentar si queremos habilitar ordenaciones-->
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Tipo.Tipo1)
+            Categoría
+            <!-- arrobaHtml.ActionLink("Tipo", "Index", new { sortOrder = ViewBag.NameSortParm }) Descomentar si queremos habilitar ordenaciones-->
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Juego1)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Tipo.Tipo1)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IdJuego }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IdJuego }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IdJuego })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Juego1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tipo.Tipo1)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.IdJuego }) |
+                @Html.ActionLink("Details", "Details", new { id = item.IdJuego }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.IdJuego })
+            </td>
+        </tr>
+    }
 
 </table>
+<br />
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+    @Html.PagedListPager(Model, page => Url.Action("GetJuegos",
+        new { page, sortOrder = ViewBag.CurrentSort }))

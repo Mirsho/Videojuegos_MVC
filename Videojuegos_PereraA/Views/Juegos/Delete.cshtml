@@ -1,0 +1,39 @@
+﻿@model Videojuegos_PereraA.Models.Juego
+
+@{
+    ViewBag.Title = "Eliminar juego";
+}
+
+<h2>Delete</h2>
+
+<h3>¿Estás seguro de que quieres borrarlo? Una vez eliminado, no se podrá recuperar...</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Juego
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Juego1)
+        </dd>
+
+        <dt>
+            Categoría
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tipo.Tipo1)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-default" /> |
+            @Html.ActionLink("Volver a la lista", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,33 @@
+﻿@model Videojuegos_PereraA.Models.Juego
+
+@{
+    ViewBag.Title = "Detalles sobre el juego";
+}
+
+<h2>Detalles del Juego</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Juego
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Juego1)
+        </dd>
+
+        <dt>
+            Categoría
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tipo.Tipo1)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.IdJuego }) |
+    @Html.ActionLink("Volver a la lista", "Index")
+</p>

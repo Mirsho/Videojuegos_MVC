@@ -1,0 +1,39 @@
+﻿@model PagedList.IPagedList<Videojuegos_PereraA.Models.Plataforma>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{
+    ViewBag.Title = "Plataformas";
+}
+
+<h2>Lista de Plataformas</h2>
+
+<!--
+<p>
+    arrobaHtml.ActionLink("Create New", "Create")
+</p>
+-->
+<table class="table">
+    <tr>
+        <th>
+            Plataforma
+            <!--arrobaHtml.ActionLink("Plataforma", "Index", new { sortOrder = ViewBag.NameSortParm }) Descomentar si queremos habilitar ordenaciones-->
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Plataforma1)
+            </td>
+        </tr>
+    }
+
+</table>
+<br />
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+    @Html.PagedListPager(Model, page => Url.Action("GetPlataformas",
+        new { page, sortOrder = ViewBag.CurrentSort }))

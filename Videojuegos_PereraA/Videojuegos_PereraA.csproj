@@ -168,6 +168,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="InfraLayer\Security\AdminFilter.cs" />
+    <Compile Include="InfraLayer\Security\ShaUtils.cs" />
     <Compile Include="Models\Cliente.cs">
       <DependentUpon>Videojuegos.tt</DependentUpon>
     </Compile>
@@ -240,6 +242,7 @@
     <Content Include="Views\Juegos\Details.cshtml" />
     <Content Include="Views\Juegos\Edit.cshtml" />
     <Content Include="Views\Juegos\Delete.cshtml" />
+    <Content Include="Views\Shared\AuthErr.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -249,9 +252,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="InfraLayer\Security\" />
     <Folder Include="Views\Auth\" />
-    <Folder Include="Views\Juego\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

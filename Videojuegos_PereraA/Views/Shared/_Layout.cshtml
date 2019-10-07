@@ -20,6 +20,18 @@
                 @Html.ActionLink("Videojuegos_PereraA", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <p class="navbar-text">Bienvenido @User.Identity.Name</p>
+                        <li><a href="@Url.Action("Logout", "Auth")"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                    }
+                    else
+                    {
+                        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                        <li><a href="@Url.Action("Login", "Auth")"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                    }
+                </ul>
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Inicio", "Index", "Home")</li>    <!--Generan URLs a un método de un controlador "Home" en este caso-->
                     <li>@Html.ActionLink("Acerca de", "About", "Home")</li>

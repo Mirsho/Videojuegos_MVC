@@ -15,7 +15,7 @@ namespace Videojuegos_PereraA.Models
     
     public partial class VideoJuegosEntitiesOLD : DbContext
     {
-        public VideoJuegosEntities()
+        public VideoJuegosEntitiesOLD()
             : base("name=VideoJuegosEntities")
         {
         }
